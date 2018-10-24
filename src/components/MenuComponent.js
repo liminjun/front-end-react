@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Media, Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class Menu extends Component {
   constructor(props) {
@@ -7,6 +7,10 @@ class Menu extends Component {
     this.state = {
       selectedDish: null
     };
+    console.log("Menu Component constructor is invoked!");
+  }
+  componentDidMount(){
+    console.log("Menu Component componentDidMount is invoked!");
   }
   onDishSelect(dish) {
     //修改state的属性，必须使用setState
@@ -32,6 +36,7 @@ class Menu extends Component {
     }
   }
   render() {
+    console.log("Menu Component render is invoked!");
     const menu = this.props.dishes.map((dish) => {
       return (
         <div key={dish.id} className="col-12 col-md-5 m-1">
