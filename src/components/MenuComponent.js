@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
+import DishDetail from './DishDetailComponent';
+import DishComment from './DishCommentComponent';
+// import DishComment from './DishCommentComponent';
+
 class Menu extends Component {
   constructor(props) {
     super(props);
@@ -21,17 +25,22 @@ class Menu extends Component {
   renderDish(dish) {
     if (dish) {
       return (
-        <Card>
-          <CardImg width="50px;" src={dish.image} alt={dish.name}></CardImg>
-          <CardBody>
-            <CardTitle>{dish.name}</CardTitle>
-            <CardText>{dish.description}</CardText>
-          </CardBody>
-        </Card>
+        <DishDetail selectedDish={this.state.selectedDish}></DishDetail>
       );
     } else {
       return (
         <div></div>
+      );
+    }
+  }
+  renderComment(dish){
+    if (dish) {
+      return (
+        <DishComment selectedDishComments={this.state.selectedDish.comments}></DishComment>
+      );
+    } else {
+      return (
+        <div>No Comments.</div>
       );
     }
   }
@@ -61,6 +70,7 @@ class Menu extends Component {
         <h3>Selected Dish:</h3>
         <div className="row">
           {this.renderDish(this.state.selectedDish)}
+          {this.renderComment(this.state.selectedDish)}
         </div>
       </div>
     );
