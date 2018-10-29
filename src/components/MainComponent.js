@@ -8,6 +8,7 @@ import DishDetail from './DishDetailComponent';
 import { DISHES } from '../shared/dishes';
 import logo from '../logo.svg';
 import {Switch,Route,Redirect} from 'react-router-dom';
+import About from './AboutComponent';
 
 
 
@@ -33,14 +34,20 @@ class Main extends Component {
       return (
         <Home></Home>
       )
+    };
+    const AboutPage=()=>{
+      return (
+        <About></About>
+      )
     }
     return (
       <div className="App">
 
         <Header></Header>
         <Switch>
-          <Route path="/home"  component={HomePage}>Home</Route>
-          <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes}>Menu</Menu>}></Route>
+          <Route path="/home"  component={HomePage}></Route>
+          <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes}></Menu>}></Route>
+          <Route path="/about" component={AboutPage}></Route>
           <Redirect to="/home"></Redirect>
         </Switch>
         {/* <Menu dishes={this.state.dishes} onClick={(dishId)=>this.onDishSelect(dishId)}></Menu>

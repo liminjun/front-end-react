@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Jumbotron } from 'reactstrap';
+import { Nav,Navbar, NavbarBrand, Jumbotron, NavItem } from 'reactstrap';
+
 
 class Header extends Component {
     render() {
         return (
             <>
-                <Navbar dark>
+                <Navbar>
                     <div className="container">
-                        <NavbarBrand href="/">My Dish</NavbarBrand>
+                        <NavbarBrand href="/home">Home</NavbarBrand>
+                        <NavbarBrand href="/menu">Menu</NavbarBrand>
+                        <NavbarBrand href="/about">About</NavbarBrand>
                     </div>
                 </Navbar>
                 <Jumbotron>
