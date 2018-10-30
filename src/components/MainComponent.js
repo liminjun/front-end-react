@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Header from './HeaderComponent';
+import Contact from './ContactComponent';
 
 import Footer from './FooterComponent';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
 import { DISHES } from '../shared/dishes';
 import logo from '../logo.svg';
-import {Switch,Route,Redirect} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import About from './AboutComponent';
+
+import { COMMENTS } from '../shared/comments';
+import { PROMOTIONS } from '../shared/promotions';
+import { LEADERS } from '../shared/leaders';
+
 
 
 
@@ -17,7 +23,10 @@ class Main extends Component {
     super(props);
 
     this.state = {
-      dishes: DISHES
+      dishes: DISHES,
+      comments: COMMENTS,
+      promotions: PROMOTIONS,
+      leaders: LEADERS
     }
   }
 
@@ -30,12 +39,16 @@ class Main extends Component {
   // }
 
   render() {
-    const HomePage=()=>{
+    const HomePage = () => {
       return (
-        <Home></Home>
+        <Home
+          dish={this.state.dishes.filter((dish) => dish.featured)[0]}
+          promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
+          leader={this.state.leaders.filter((leader) => leader.featured)[0]}
+        />
       )
     };
-    const AboutPage=()=>{
+    const AboutPage = () => {
       return (
         <About></About>
       )
@@ -45,9 +58,10 @@ class Main extends Component {
 
         <Header></Header>
         <Switch>
-          <Route path="/home"  component={HomePage}></Route>
-          <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes}></Menu>}></Route>
+          <Route path="/home" component={HomePage}></Route>
+          <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes}></Menu>}></Route>
           <Route path="/about" component={AboutPage}></Route>
+          <Route path="/contanctus" component={Contact}></Route>
           <Redirect to="/home"></Redirect>
         </Switch>
         {/* <Menu dishes={this.state.dishes} onClick={(dishId)=>this.onDishSelect(dishId)}></Menu>
