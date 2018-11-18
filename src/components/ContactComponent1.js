@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Col, Input, FormFeedback } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
+import { Control, Form, Errors, actions } from 'react-redux-form';
+
 class Contact extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +40,8 @@ class Contact extends Component {
     handleSubmit(event) {
         console.log("Current State is:" + JSON.stringify(this.state));
         alert("Current State is:" + JSON.stringify(this.state));
-        event.preventDefault();
+        this.props.resetFeedbackForm();
+        //event.preventDefault();
     }
     handleBlur = (field) => (evt) => {
         this.setState({
