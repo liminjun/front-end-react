@@ -25,7 +25,7 @@ function RenderDish({ dish }) {
   }
 }
 
-function RenderComments({ comments, addComment, dishId }) {
+function RenderComments({ comments, postComment, dishId }) {
 
   if (comments) {
     const commentList = comments.map((comment) => {

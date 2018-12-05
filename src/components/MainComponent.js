@@ -14,7 +14,8 @@ import { connect } from 'react-redux';
 
 
 import { actions } from 'react-redux-form';
-import { addComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
+import { addComment,postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators';
+
 
 const mapStateToProps = state => {
   return {
@@ -31,7 +32,8 @@ const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm: () => { dispatch(actions.reset('feedback')) },
 
   fetchComments: () => dispatch(fetchComments()),
-  fetchPromos: () => dispatch(fetchPromos())
+  fetchPromos: () => dispatch(fetchPromos()),
+  postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment))
 })
 
 
@@ -47,7 +49,9 @@ class Main extends Component {
 
     this.props.fetchComments();
     this.props.fetchPromos();
+
   }
+  
 
 
 
