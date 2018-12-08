@@ -78,11 +78,7 @@ class Main extends Component {
       )
     };
 
-    const ContactPage = () => {
-      return (
-        <Contact></Contact>
-      )
-    }
+
     const DishWithId = ({ match }) => {
       return (
         <DishDetail dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10))[0]}
@@ -90,7 +86,7 @@ class Main extends Component {
           errMess={this.props.dishes.errMess}
           comments={this.props.comments.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))}
           commentsErrMess={this.props.comments.errMess}
-          addComment={this.props.addComment}
+          postComment={this.props.postComment}
         />
       );
     }
