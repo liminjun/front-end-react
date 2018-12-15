@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import {
+  Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button,
+  Modal, ModalHeader, ModalBody, ModalFooter
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+import CommentForm from './CommentFormComponent';
 
 
 function RenderDish({ dish }) {
@@ -31,7 +35,10 @@ function RenderDish({ dish }) {
   }
 }
 
+
 function RenderComments({ comments, postComment, dishId }) {
+
+  
 
   if (comments) {
 
@@ -54,6 +61,7 @@ function RenderComments({ comments, postComment, dishId }) {
             }
           </Stagger>
         </ul>
+        <CommentForm dishId={dishId} postComment={postComment}></CommentForm>
       </div>
     )
   } else {
@@ -63,6 +71,9 @@ function RenderComments({ comments, postComment, dishId }) {
   }
 }
 const DishDetail = (props) => {
+
+  
+
   if (props.isLoading) {
     return (
       <div className="container">
@@ -103,7 +114,7 @@ const DishDetail = (props) => {
               <RenderDish dish={props.dish} />
             </div>
             <div className="col-12 col-md-5 m-1">
-              <RenderComments comments={props.comments} postComment={props.postComment}
+              <RenderComments comments={props.comments}  postComment={props.postComment}
                 dishId={props.dish.id} />
             </div>
           </div>
